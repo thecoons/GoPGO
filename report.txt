@@ -1,0 +1,66 @@
+$ just pgo-workflow
+go build -o gopgo
+🚀 Starting server in background...
+Starting server on port 8080...
+🧠 Starting CPU profile collection in background...
+🔄 Generating load while profiling...
+goos: linux
+goarch: amd64
+pkg: gocoon.dev/goPGO
+cpu: 13th Gen Intel(R) Core(TM) i5-1340P
+BenchmarkStatusEndpointLive-16                     48064             96962 ns/op
+BenchmarkComputeEndpointLive1000-16                15934            300476 ns/op
+BenchmarkComputeEndpointLive10000-16               16357            303530 ns/op
+BenchmarkComputeEndpointLive100000-16              15446            306030 ns/op
+BenchmarkColdPathLive-16                           44419            103644 ns/op
+PASS
+ok      gocoon.dev/goPGO        35.061s
+⏳ Waiting for profiling to complete...
+🛑 Stopping server...
+✅ PGO workflow complete. Run benchmarks to compare performance.
+
+$ just benchmark-compare
+🔨 Building without PGO...
+go build -o gopgo
+🚀 Starting server in background for before benchmarks...
+Starting server on port 8080...
+🔍 Running live benchmarks before PGO...
+🛑 Stopping server...
+🔨 Building with PGO...
+go build -pgo=cpu.pprof -o gopgo
+🚀 Starting server with PGO in background for after benchmarks...
+Starting server on port 8080...
+🔍 Running live benchmarks after PGO...
+🛑 Stopping server...
+📊 Benchmark comparison:
+goos: linux
+goarch: amd64
+pkg: gocoon.dev/goPGO
+cpu: 13th Gen Intel(R) Core(TM) i5-1340P
+                             │ benchmark-before.txt │        benchmark-after.txt         │
+                             │        sec/op        │   sec/op     vs base               │
+StatusEndpointLive-16                   98.73µ ± 3%   94.12µ ± 4%   -4.68% (p=0.002 n=6)
+ComputeEndpointLive1000-16              296.3µ ± 2%   375.5µ ± 3%  +26.70% (p=0.002 n=6)
+ComputeEndpointLive10000-16             298.7µ ± 5%   384.4µ ± 1%  +28.66% (p=0.002 n=6)
+ComputeEndpointLive100000-16            298.6µ ± 3%   376.3µ ± 4%  +26.03% (p=0.002 n=6)
+ColdPathLive-16                         109.7µ ± 4%   110.7µ ± 5%        ~ (p=0.699 n=6)
+geomean                                 195.6µ        224.1µ       +14.59%
+
+                             │ benchmark-before.txt │        benchmark-after.txt         │
+                             │         B/op         │     B/op      vs base              │
+StatusEndpointLive-16                  4.405Ki ± 0%   4.405Ki ± 0%       ~ (p=0.859 n=6)
+ComputeEndpointLive1000-16             4.424Ki ± 0%   4.426Ki ± 0%       ~ (p=0.331 n=6)
+ComputeEndpointLive10000-16            4.431Ki ± 0%   4.429Ki ± 0%       ~ (p=0.615 n=6)
+ComputeEndpointLive100000-16           4.436Ki ± 0%   4.438Ki ± 0%       ~ (p=0.998 n=6)
+ColdPathLive-16                        4.471Ki ± 0%   4.468Ki ± 0%       ~ (p=0.372 n=6)
+geomean                                4.433Ki        4.433Ki       +0.00%
+
+                             │ benchmark-before.txt │        benchmark-after.txt         │
+                             │      allocs/op       │ allocs/op   vs base                │
+StatusEndpointLive-16                    57.00 ± 0%   57.00 ± 0%       ~ (p=1.000 n=6) ¹
+ComputeEndpointLive1000-16               57.00 ± 0%   57.00 ± 0%       ~ (p=1.000 n=6) ¹
+ComputeEndpointLive10000-16              57.00 ± 0%   57.00 ± 0%       ~ (p=1.000 n=6) ¹
+ComputeEndpointLive100000-16             57.00 ± 0%   57.00 ± 0%       ~ (p=1.000 n=6) ¹
+ColdPathLive-16                          57.00 ± 0%   57.00 ± 0%       ~ (p=1.000 n=6) ¹
+geomean                                  57.00        57.00       +0.00%
+¹ all samples are equal
