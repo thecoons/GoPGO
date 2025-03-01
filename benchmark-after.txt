@@ -1,0 +1,36 @@
+goos: linux
+goarch: amd64
+pkg: gocoon.dev/goPGO
+cpu: 13th Gen Intel(R) Core(TM) i5-1340P
+BenchmarkStatusEndpointLive-16           	   12003	     93403 ns/op	    4505 B/op	      57 allocs/op
+BenchmarkStatusEndpointLive-16           	   12255	     95206 ns/op	    4509 B/op	      57 allocs/op
+BenchmarkStatusEndpointLive-16           	   12105	     93852 ns/op	    4511 B/op	      57 allocs/op
+BenchmarkStatusEndpointLive-16           	   12610	     95653 ns/op	    4512 B/op	      57 allocs/op
+BenchmarkStatusEndpointLive-16           	   13008	     94378 ns/op	    4514 B/op	      57 allocs/op
+BenchmarkStatusEndpointLive-16           	   12613	     90384 ns/op	    4511 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive1000-16      	    2948	    369704 ns/op	    4530 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive1000-16      	    2971	    374328 ns/op	    4532 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive1000-16      	    3175	    371627 ns/op	    4541 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive1000-16      	    3075	    376586 ns/op	    4530 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive1000-16      	    3691	    382849 ns/op	    4538 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive1000-16      	    3142	    386281 ns/op	    4533 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive10000-16     	    3136	    384635 ns/op	    4537 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive10000-16     	    2793	    380249 ns/op	    4532 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive10000-16     	    3099	    386296 ns/op	    4545 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive10000-16     	    3112	    384103 ns/op	    4538 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive10000-16     	    2978	    383609 ns/op	    4533 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive10000-16     	    2923	    389432 ns/op	    4531 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive100000-16    	    2966	    377064 ns/op	    4532 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive100000-16    	    3056	    390645 ns/op	    4538 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive100000-16    	    3049	    375601 ns/op	    4548 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive100000-16    	    2868	    391377 ns/op	    4549 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive100000-16    	    3096	    365164 ns/op	    4541 B/op	      57 allocs/op
+BenchmarkComputeEndpointLive100000-16    	    5449	    362589 ns/op	    4549 B/op	      57 allocs/op
+BenchmarkColdPathLive-16                 	   10000	    108764 ns/op	    4566 B/op	      57 allocs/op
+BenchmarkColdPathLive-16                 	   10000	    109794 ns/op	    4572 B/op	      57 allocs/op
+BenchmarkColdPathLive-16                 	   10000	    105386 ns/op	    4577 B/op	      57 allocs/op
+BenchmarkColdPathLive-16                 	   10600	    111867 ns/op	    4575 B/op	      57 allocs/op
+BenchmarkColdPathLive-16                 	    9724	    111523 ns/op	    4575 B/op	      57 allocs/op
+BenchmarkColdPathLive-16                 	    9903	    112847 ns/op	    4582 B/op	      57 allocs/op
+PASS
+ok  	gocoon.dev/goPGO	42.810s
